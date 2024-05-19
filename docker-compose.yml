@@ -1,0 +1,15 @@
+services:
+  ecurrency:
+    build: ./
+    ports:
+      - 8000:8000
+    depends_on:
+      - db
+
+  db:
+    restart: always
+    image: postgres:latest
+    volumes:
+    - ./.database/postgres/data:/var/lib/postgresql/data
+    ports:
+      - 5436:5432
